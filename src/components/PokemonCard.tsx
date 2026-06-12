@@ -1,5 +1,11 @@
-function PokemonCard(props) {
-    console.log(props.pokemon)
+interface Pokemon {
+    name: string;
+    imgSrc?: string;
+}
+interface PokemonCardProps {
+    pokemon: Pokemon;
+}
+function PokemonCard(props: PokemonCardProps) {
     const { pokemon } = props;
     return (
         <div>
