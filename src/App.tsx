@@ -1,4 +1,6 @@
 // @ts-ignore
+import { useState } from "react";
+// @ts-ignore
 import "./App.css";
 import PokemonCard from "./Components/PokemonCard";
 
@@ -13,11 +15,24 @@ const pokemonList = [
   },
 ];
 function App() {
+  const [pokemonName, setPokemonName] = useState("bulbasaur");
+
+  const pokemon = pokemonList.find((pokemon) => pokemon.name === pokemonName
+  );
+  if (!pokemon) {
+    throw new Error("Invalid pokemon name");
+  }
 
   return (
-
-    < PokemonCard pokemon={pokemonList[0]} />
+    <div>
+      <button onClick={() => setPokemonName("bulbasaur")}> bulbasaur
+      </button>
+      <button onClick={() => setPokemonName("mew")}>mew
+      </button>
+      <PokemonCard pokemon={pokemon} />
+    </div>
   );
 }
+
 
 export default App;
